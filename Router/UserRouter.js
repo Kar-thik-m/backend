@@ -8,7 +8,7 @@ import { sendToken } from '../Utils/GetTokenAcess.js';
 import { authenticateToken } from '../Utils/Authentication.js';
 const userRouter = express.Router();
 
-
+//;;;;;
 userRouter.post('/register', uploadFile, async (req, res) => {
     try {
         const payload = req.body;

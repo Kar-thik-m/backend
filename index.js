@@ -1,5 +1,5 @@
 import express from "express";
-import connectToDb from "./DataBase/Database.js";
+import connectToDb from "./Database/Database.js";
 import userRouter from "./Router/UserRouter.js";
 import MessageRouter from "./Router/Message.js";
 import cloudinary from "cloudinary";
