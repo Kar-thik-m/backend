@@ -13,7 +13,7 @@ MessageRouter.post('/sendMessage/:id', authenticateToken, async (req, res) => {
         console.log(receiverId);
 
         const senderId = req.user.id;
-       console.log(message)
+        console.log(message)
         if (!message) {
             return res.status(400).json({ error: "Message content is required." });
         }
@@ -43,6 +43,11 @@ MessageRouter.post('/sendMessage/:id', authenticateToken, async (req, res) => {
         if (receiverSocketId) {
             io.to(receiverSocketId).emit("newMessage", newMessage);
             console.log(newMessage);
+            io.to(receiverSocketId).emit("notification", {
+                senderId,
+                userinfo: `New message from ${req.user.username}: ${message}`
+            });
+            console.log("Notification sent:", newMessage);
         }
         return res.status(201).json({
             newMessage
